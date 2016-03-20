@@ -1,0 +1,41 @@
+<html ng-app="myApp">
+    <head>
+        <script src="./node_modules/angular/angular.min.js"></script>
+        <script src="./node_modules/zingchart/client/zingchart.min.js"></script>
+        <script src="./node_modules/zingchart-angularjs/src/zingchart-angularjs.js"></script>
+        <script>
+            var app = angular.module('myApp', ['zingchart-angularjs']);
+            app.controller('MainController', function($scope, $interval){
+                $scope.myData = [[1,4,5,5,10], [9,3,4,5,6]] ;
+                $scope.myRender = {
+                    output : "canvas",
+                    events : {
+                        complete : function(p) {
+                            console.log("here");
+                            // alert("Chart is finished!");
+                        }
+                    }
+                }
+                $scope.myObj = {
+                    type : 'bar',
+                    width: "600",
+                    height: "400",
+                    series: [
+                        { backgroundColor : "#FAEE00" },
+                        { backgroundColor : "#A0FFEE" }
+                    ]
+                };
+                $interval(function(){
+                    $scope.myData[0].push(Math.random() * 10);
+                    $scope.myData[1].push(Math.random() * 10);
+                }, 1000);
+            });
+
+        </script>
+    </head>
+    <body>
+        <div ng-controller="MainController">
+            <zingchart id="chart-1" zc-values="myData" zc-json="myObj" zc-render="myRender"></zingchart>
+        </div>
+    </body>
+</html>
