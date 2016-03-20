@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "zingchart-angularjs",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "description": "Piletilevi charting tool",
   "homepage": "https://github.com/Piletilevi/zingchart-angularjs",
